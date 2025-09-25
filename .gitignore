@@ -416,3 +416,40 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Arquivos e pastas gerados pelo Quartus
+*.qws
+*.bak
+*.slog
+*.pof
+*.sof
+*.ttf
+*.cdf
+*.hdb
+*.db
+*.qarlog
+*.ddb
+*.rpt
+*.summary
+*.done
+*.jdi
+*.pin
+*.sld
+*.qws
+*.qip
+*_bb.*
+
+# Pastas de compilação e banco de dados
+db/
+incremental_db/
+output_files/
+simulation/
+greybox_tmp/
+c5_pin_model_dump.txt
+
+# Arquivos do Visual Studio
+.vs/
+*.suo
+*.user
+*.vcxproj.filters
+*.vcxproj.user
