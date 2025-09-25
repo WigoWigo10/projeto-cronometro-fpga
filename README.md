@@ -37,11 +37,13 @@ Aqui está o progresso atual do desenvolvimento. Para mais detalhes sobre as tar
 - [x] **Módulo 2: Detector de Transição**
     - [x] Código Verilog implementado e comentado.
     - [x] Módulo validado via simulação funcional.
+- [x] **Módulo 4: Memória Interna e Contadores de Endereço**
+    - [x] Código Verilog implementado e comentado.
+    - [x] Módulo validado via simulação funcional.
 
 ### Próximos Passos (To Do)
 
 - [ ] **Módulo 3: Contador do Cronômetro** (centésimos e segundos)
-- [ ] **Módulo 4: Memória Interna e Contadores de Endereço**
 - [ ] **Módulo 5: Integração Top-Level** (conectar todos os módulos)
 - [ ] **Finalização:** Atribuição de Pinos (Pin Planner) e preparação da documentação final.
 
