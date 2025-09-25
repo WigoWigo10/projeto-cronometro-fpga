@@ -25,6 +25,24 @@ O sistema é controlado por uma série de botões e chaves com as seguintes fun�
       * `1`: Mostra a contagem corrente do cronômetro.
       * `0`: Mostra o valor lido da memória.
 
+## Status do Projeto
+
+Aqui está o progresso atual do desenvolvimento. Para mais detalhes sobre as tarefas, consulte a seção [Issues](https://github.com/WigoWigo10/projeto-cronometro-fpga/issues) do repositório.
+
+### Módulos Concluídos (Done)
+
+- [x] **Módulo 1: Divisor de Frequência**
+    - [x] Código Verilog implementado e comentado.
+    - [x] Módulo validado via simulação funcional.
+    - [x] Testado com `DIVISOR` para simulação rápida e para implementação final.
+
+### Próximos Passos (To Do)
+
+- [ ] **Módulo 2: Detector de Transição**
+- [ ] **Módulo 3: Contador do Cronômetro** (centésimos e segundos)
+- [ ] **Módulo 4: Memória Interna e Contadores de Endereço**
+- [ ] **Módulo 5: Integração Top-Level** (conectar todos os módulos)
+- [ ] **Finalização:** Atribuição de Pinos (Pin Planner) e preparação da documentação final.
 ## Estrutura de Pastas
 
 ```
