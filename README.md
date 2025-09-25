@@ -68,9 +68,9 @@ Aqui está o progresso atual do desenvolvimento. Para mais detalhes sobre as tar
 
 ## Equipe
 
-  * Higor Cavalcante
-  * Ricardo Lucca
-  * Luis Guilherme
+  * Higor Cavalcante ([@WigoWigo10](https://github.com/WigoWigo10))
+  * Ricardo Lucca ([@ricohd22](https://github.com/ricohd22))
+  * Luis Guilherme ([@Asteeeeee](https://github.com/Asteeeeee))
   * Lucas Kramer
   * Schaidson Souza
 
