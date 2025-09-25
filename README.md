@@ -1,6 +1,11 @@
 # Cronômetro Digital com Memória para FPGA
 
+![Quartus II](https://img.shields.io/badge/Quartus%20II-9.1-blue?style=for-the-badge&logo=intel)
+![Verilog](https://img.shields.io/badge/Language-Verilog-green?style=for-the-badge)
+![Cyclone II](https://img.shields.io/badge/FPGA-Cyclone%20II-orange?style=for-the-badge)
+
 ## Sobre o Projeto
+
 
 Este repositório contém a implementação de um cronômetro digital com memória, desenvolvido em Verilog para a disciplina de **Tecnologia e Hardware Reprogramável**. O projeto foi projetado para ser sintetizado e executado em uma placa FPGA Altera Cyclone II.
 
