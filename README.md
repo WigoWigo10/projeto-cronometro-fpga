@@ -34,15 +34,17 @@ Aqui está o progresso atual do desenvolvimento. Para mais detalhes sobre as tar
 - [x] **Módulo 1: Divisor de Frequência**
     - [x] Código Verilog implementado e comentado.
     - [x] Módulo validado via simulação funcional.
-    - [x] Testado com `DIVISOR` para simulação rápida e para implementação final.
+- [x] **Módulo 2: Detector de Transição**
+    - [x] Código Verilog implementado e comentado.
+    - [x] Módulo validado via simulação funcional.
 
 ### Próximos Passos (To Do)
 
-- [ ] **Módulo 2: Detector de Transição**
 - [ ] **Módulo 3: Contador do Cronômetro** (centésimos e segundos)
 - [ ] **Módulo 4: Memória Interna e Contadores de Endereço**
 - [ ] **Módulo 5: Integração Top-Level** (conectar todos os módulos)
 - [ ] **Finalização:** Atribuição de Pinos (Pin Planner) e preparação da documentação final.
+
 ## Estrutura de Pastas
 
 ```
