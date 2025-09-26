@@ -66,6 +66,58 @@ Aqui está o progresso atual do desenvolvimento. Para mais detalhes sobre as tar
       * **Família:** Cyclone II
       * **Dispositivo:** EP2C20F484C7
 
+## Atribuição de Pinos (Pin Assignments)
+
+A tabela a seguir detalha a conexão entre as portas do módulo Verilog de nível superior (`cronometro.v`) e os pinos físicos da placa FPGA DE1.
+
+### Entradas
+
+| Sinal (Porta no Top-Level) | Componente na Placa | Pino no FPGA |
+|:---|:---|:---|
+| `CLOCK_50` | 50MHz Oscillator | `PIN_L1` |
+| `KEY_RESET` | Push-button `KEY0` | `PIN_R22` |
+| `SW_RUN` | Toggle Switch `SW0` | `PIN_L22` |
+| `KEY_WRITE` | Push-button `KEY1` | `PIN_R21` |
+| `KEY_READ` | Push-button `KEY2` | `PIN_T22` |
+| `SW_DISPLAY_MODE` | Toggle Switch `SW1` | `PIN_L21` |
+
+### Saídas
+
+| Sinal (Porta no Top-Level) | Componente na Placa | Pino no FPGA |
+|:---|:---|:---|
+| **`HEX0[6:0]`** (Centésimos, LSB) | Display `HEX0` | |
+| `HEX0[0]` | HEX0 - Segmento 0 | `PIN_J2` |
+| `HEX0[1]` | HEX0 - Segmento 1 | `PIN_J1` |
+| `HEX0[2]` | HEX0 - Segmento 2 | `PIN_H2` |
+| `HEX0[3]` | HEX0 - Segmento 3 | `PIN_H1` |
+| `HEX0[4]` | HEX0 - Segmento 4 | `PIN_F2` |
+| `HEX0[5]` | HEX0 - Segmento 5 | `PIN_F1` |
+| `HEX0[6]` | HEX0 - Segmento 6 | `PIN_E2` |
+| **`HEX1[6:0]`** | Display `HEX1` | |
+| `HEX1[0]` | HEX1 - Segmento 0 | `PIN_E1` |
+| `HEX1[1]` | HEX1 - Segmento 1 | `PIN_H6` |
+| `HEX1[2]` | HEX1 - Segmento 2 | `PIN_H5` |
+| `HEX1[3]` | HEX1 - Segmento 3 | `PIN_H4` |
+| `HEX1[4]` | HEX1 - Segmento 4 | `PIN_G3` |
+| `HEX1[5]` | HEX1 - Segmento 5 | `PIN_D2` |
+| `HEX1[6]` | HEX1 - Segmento 6 | `PIN_D1` |
+| **`HEX2[6:0]`** (Segundos, LSB) | Display `HEX2` | |
+| `HEX2[0]` | HEX2 - Segmento 0 | `PIN_G5` |
+| `HEX2[1]` | HEX2 - Segmento 1 | `PIN_G6` |
+| `HEX2[2]` | HEX2 - Segmento 2 | `PIN_C2` |
+| `HEX2[3]` | HEX2 - Segmento 3 | `PIN_C1` |
+| `HEX2[4]` | HEX2 - Segmento 4 | `PIN_E3` |
+| `HEX2[5]` | HEX2 - Segmento 5 | `PIN_E4` |
+| `HEX2[6]` | HEX2 - Segmento 6 | `PIN_D3` |
+| **`HEX3[6:0]`** (Segundos, MSB) | Display `HEX3` | |
+| `HEX3[0]` | HEX3 - Segmento 0 | `PIN_F4` |
+| `HEX3[1]` | HEX3 - Segmento 1 | `PIN_D5` |
+| `HEX3[2]` | HEX3 - Segmento 2 | `PIN_D6` |
+| `HEX3[3]` | HEX3 - Segmento 3 | `PIN_J4` |
+| `HEX3[4]` | HEX3 - Segmento 4 | `PIN_L8` |
+| `HEX3[5]` | HEX3 - Segmento 5 | `PIN_F3` |
+| `HEX3[6]` | HEX3 - Segmento 6 | `PIN_D4` |
+
 ## Equipe
 
   * Higor Cavalcante ([@WigoWigo10](https://github.com/WigoWigo10))
