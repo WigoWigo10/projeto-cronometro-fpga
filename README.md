@@ -13,39 +13,41 @@ O sistema realiza uma contagem de 0 a 59 segundos e 0 a 99 centésimos de segund
 
 ## Funcionalidades
 
-O sistema é controlado por uma série de botões e chaves com as seguintes funções:
+O sistema é controlado pelos seguintes botões e chaves da placa:
 
-  * **`KEY0`**: Quando pressionada, reinicia a contagem do cronômetro para `00:00`.
-  * **`KEY1`**: Atua como um controle de contagem.
-      * `1`: Inicia ou continua a contagem.
-      * `0`: Suspende a contagem.
-  * **`Write`**: Armazena o tempo atual do cronômetro em uma das 4 posições da memória interna, de forma sequencial (0 -\> 1 -\> 2 -\> 3 -\> 0).
-  * **`Read`**: Exibe no display o tempo armazenado na memória, avançando sequencialmente pelas posições a cada pressionamento.
-  * **`Display`**: Chave seletora para o que é exibido nos displays.
-      * `1`: Mostra a contagem corrente do cronômetro.
-      * `0`: Mostra o valor lido da memória.
+* **`KEY0` (`KEY_RESET`):** Quando pressionada, reinicia a contagem do cronômetro para `00:00`.
+* **`SW0` (`SW_RUN`):** Atua como um controle de contagem.
+    * `1`: Inicia ou continua a contagem.
+    * `0`: Suspende a contagem.
+* **`KEY1` (`KEY_WRITE`):** Armazena o tempo atual do cronômetro em uma das 4 posições da memória interna, de forma sequencial (0 -> 1 -> 2 -> 3 -> 0).
+* **`KEY2` (`KEY_READ`):** Exibe no display o tempo armazenado na memória, avançando sequencialmente pelas posições a cada pressionamento.
+* **`SW1` (`SW_DISPLAY_MODE`):** Chave seletora para o que é exibido nos displays.
+    * `1`: Mostra a contagem corrente do cronômetro.
+    * `0`: Mostra o valor lido da memória.
 
 ## Status do Projeto
 
-Aqui está o progresso atual do desenvolvimento. Para mais detalhes sobre as tarefas, consulte a seção [Issues](https://github.com/WigoWigo10/projeto-cronometro-fpga/issues) do repositório.
+O desenvolvimento do projeto foi concluído. Todos os módulos foram implementados, integrados e validados através de simulação funcional. O sistema está pronto para ser sintetizado e programado na placa FPGA Altera Cyclone II.
 
-### Módulos Concluídos (Done)
+### Módulos e Etapas Concluídas (Done)
 
 - [x] **Módulo 1: Divisor de Frequência**
-    - [x] Código Verilog implementado e comentado.
-    - [x] Módulo validado via simulação funcional.
+  - [x] Código Verilog implementado e comentado.
+  - [x] Módulo validado via simulação funcional.
 - [x] **Módulo 2: Detector de Transição**
-    - [x] Código Verilog implementado e comentado.
-    - [x] Módulo validado via simulação funcional.
-- [x] **Módulo 4: Memória Interna e Contadores de Endereço**
-    - [x] Código Verilog implementado e comentado.
-    - [x] Módulo validado via simulação funcional.
-
-### Próximos Passos (To Do)
-
-- [ ] **Módulo 3: Contador do Cronômetro** (centésimos e segundos)
-- [ ] **Módulo 5: Integração Top-Level** (conectar todos os módulos)
-- [ ] **Finalização:** Atribuição de Pinos (Pin Planner) e preparação da documentação final.
+  - [x] Código Verilog implementado e comentado.
+  - [x] Módulo validado via simulação funcional.
+- [x] **Módulo 3: Contador do Cronômetro**
+  - [x] Código Verilog para contagem BCD de segundos e centésimos implementado.
+- [x] **Módulo 4: Memória Interna**
+  - [x] Código Verilog para armazenamento de 4 tempos implementado.
+  - [x] Módulo validado via simulação funcional.
+- [x] **Módulo 5: Integração Top-Level**
+  - [x] Todos os submódulos foram integrados no módulo `cronometro.v`.
+  - [x] Lógica de controle e seleção de display implementada.
+- [x] **Finalização e Verificação**
+  - [x] Atribuição final de todos os pinos de I/O no Pin Planner.
+  - [x] Criação do arquivo de simulação para o sistema completo (`sim_cronometro.vwf`).
 
 ## Estrutura de Pastas
 
@@ -57,6 +59,17 @@ Aqui está o progresso atual do desenvolvimento. Para mais detalhes sobre as tar
 ├── sim/         # Arquivos de simulação (.vwf)
 └── README.md
 ```
+
+### Módulos Verilog (rtl/)
+
+O código-fonte do projeto é modular e está dividido nos seguintes arquivos:
+
+* `cronometro.v`: **Módulo Top-Level** que integra todos os outros componentes e conecta a lógica aos pinos físicos da FPGA.
+* `divisor_clock.v`: Gera um sinal de clock de **100 Hz** a partir do oscilador de 50 MHz da placa, usado como base para a contagem de centésimos de segundo.
+* `contador_cronometro.v`: Implementa a lógica de contagem de **0 a 59 segundos** e **0 a 99 centésimos** no formato BCD.
+* `detector_transicao.v`: Cria um pulso de clock único para cada pressionamento de botão (`KEY_WRITE`, `KEY_READ`), evitando múltiplas ativações indesejadas (debouncing).
+* `memoria.v`: Armazena até **4 marcações de tempo** (16 bits cada) em um banco de registradores.
+* `decodificador_7seg.v`: Converte os valores BCD de 4 bits de cada dígito para o formato de 7 segmentos a ser exibido nos displays.
 
 ## Hardware e Software
 
