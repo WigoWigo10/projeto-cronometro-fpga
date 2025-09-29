@@ -32,19 +32,19 @@ begin
         // A contagem so acontece se o sinal 'enable' estiver ativo.
 
         // Incrementa a unidade de centesimos a cada pulso de 100 Hz.
-        cs_unidade <= cs_unidade + 1;
+        cs_unidade <= cs_unidade + 4'd1;
 
         if (cs_unidade == 9) begin
             cs_unidade <= 4'd0;
-            cs_dezena <= cs_dezena + 1;
+            cs_dezena <= cs_dezena + 4'd1;
 
             if (cs_dezena == 9) begin
                 cs_dezena <= 4'd0;
-                s_unidade <= s_unidade + 1;
+                s_unidade <= s_unidade + 4'd1;
 
                 if (s_unidade == 9) begin
                     s_unidade <= 4'd0;
-                    s_dezena <= s_dezena + 1;
+                    s_dezena <= s_dezena + 4'd1;
 
                     // O limite para a dezena de segundos e 59.
                     if (s_dezena == 5) begin

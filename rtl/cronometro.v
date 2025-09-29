@@ -110,12 +110,12 @@ module cronometro (
         else begin
             // Incrementa o endereco de escrita quando o botao WRITE for pressionado
             if (write_pulse_wire) begin
-                write_address_reg <= write_address_reg + 1;
+                write_address_reg <= write_address_reg + 2'd1;
             end
 
             // Incrementa o endereco de leitura quando o botao READ for pressionado
             if (read_pulse_wire) begin
-                read_address_reg <= read_address_reg + 1;
+                read_address_reg <= read_address_reg + 2'd1;
             end
         end
     end
