@@ -9,10 +9,10 @@
 module cronometro (
     // --- Entradas Fisicas ---
     input  wire CLOCK_50,          // Clock de 50 MHz da placa
-    input  wire KEY_RESET,         // Botao KEY0 para resetar o sistema (ativo em baixo)
+    input  wire KEY_RESET,         // Botao KEY0 para resetar o sistema (ativo-baixo)
     input  wire SW_RUN,            // Chave SW0 para iniciar/parar a contagem
-    input  wire KEY_WRITE,         // Botao KEY1 para salvar o tempo (ativo em baixo)
-    input  wire KEY_READ,          // Botao KEY2 para ler o tempo da memoria (ativo em baixo)
+    input  wire KEY_WRITE,         // Botao KEY1 para salvar o tempo (ativo-baixo)
+    input  wire KEY_READ,          // Botao KEY2 para ler o tempo da memoria (ativo-baixo)
     input  wire SW_DISPLAY_MODE,   // Chave SW1 para selecionar o que e exibido
 
     // --- Saidas Fisicas (Displays de 7 Segmentos) ---
@@ -26,12 +26,6 @@ module cronometro (
 
     // Sinal de clock de 100Hz gerado pelo divisor
     wire clk_100hz_wire;
-    
-    // Sinal de reset padronizado (ativo-alto) para os módulos
-    wire reset_wire;
-    assign reset_wire = ~KEY_RESET; // O botão KEY é ativo-baixo
-
-    // Pulsos de um ciclo de clock para os botoes de escrita e leitura
     wire write_pulse_wire;
     wire read_pulse_wire;
 
@@ -54,31 +48,34 @@ module cronometro (
     // --- Instancias dos Modulos ---
 
     // 1. Divisor de Frequencia: Gera 100Hz a partir de 50MHz
+    // O sinal de reset é invertido para se tornar ativo-baixo, como o módulo espera.
     divisor_clock inst_divisor (
         .clk_in(CLOCK_50),
-        .rst(reset_wire), 
+        .rst(KEY_RESET), 
         .clk_out(clk_100hz_wire)
     );
 
     // 2. Detectores de Transicao (um para cada botao de acao)
+    // O sinal de clear é invertido para se tornar ativo-baixo.
     detector_transicao inst_detect_write (
         .signal_in(~KEY_WRITE),
         .clock(CLOCK_50),
-        .clear(reset_wire),
+        .clear(KEY_RESET),
         .edge_detected(write_pulse_wire)
     );
 
     detector_transicao inst_detect_read (
         .signal_in(~KEY_READ),
         .clock(CLOCK_50),
-        .clear(reset_wire),
+        .clear(KEY_RESET),
         .edge_detected(read_pulse_wire)
     );
 
     // 3. Contador do Cronometro
+    // O sinal de reset é invertido para se tornar ativo-baixo.
     contador_cronometro inst_contador (
         .clk_100hz(clk_100hz_wire),
-        .reset(reset_wire),
+        .reset(KEY_RESET),
         .enable(SW_RUN),
         .cs_unidade(cs_unidade_wire),
         .cs_dezena(cs_dezena_wire),
@@ -106,15 +103,14 @@ module cronometro (
     reg [1:0] write_address_reg = 2'd0;
     reg [1:0] read_address_reg  = 2'd0;
 
-    // Lógica síncrona para os contadores de endereço da memória.
-    // O reset agora é síncrono para garantir consistência com o resto do design.
+    // Isso garante que todos os registradores do projeto sigam a mesma estratégia
+    // de reset, tornando o design mais robusto e confiável.
     always @(posedge CLOCK_50) begin
-        if (reset_wire) begin // Reset síncrono ativo-alto
+        if (!KEY_RESET) begin // Reset síncrono, ativo-baixo (quando KEY_RESET é '0')
             write_address_reg <= 2'd0;
             read_address_reg  <= 2'd0;
         end
         else begin
-            // Incrementa o endereco de escrita quando o botao WRITE for pressionado
             if (write_pulse_wire) begin
                 write_address_reg <= write_address_reg + 2'd1;
             end
